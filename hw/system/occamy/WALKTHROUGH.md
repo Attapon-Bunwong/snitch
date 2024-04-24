@@ -28,6 +28,8 @@ Once the RTL has been generated, it can be compiled for simulation. Different ta
 ```bash
 # Compile the RTL for Questasim
 make bin/occamy_top.vsim
+# Compile the RTL for VCS
+make bin/occamy_top.vcs
 ```
 
 The RTL simulation model is compiled in `./work-vsim` and the [frontend server (fesvr)](https://github.com/riscv-software-src/riscv-isa-sim) and other C++ sources used throughout the testbench are compiled into `./work`. A script named `bin/occamy_top.vsim` was also generated (_you can have a look inside the file_) as a wrapper for the command that you would invoke to simulate your hardware with Questasim. The script takes an executable compiled for Snitch as input, and feeds it as an argument to the simulator. The testbench relies on the `fesvr` utilities to load your executable into the simulated DRAM memory.
@@ -49,6 +51,13 @@ make DEBUG=ON sw
 The `sw` target first generates some C header files which depend on the hardware configuration. Hence, the need to generate the software for the same configuration as your hardware. Afterwards, it recursively invokes the `make` target in the `sw` subdirectory to build the apps/kernels which have been developed in that directory.
 
 The `DEBUG=ON` flag is used to tell the compiler to produce debugging symbols. It is necessary for the `annotate` target, showcased in the Debugging section of this guide, to work.
+
+```bash
+./bin/occamy_top.vcs sw/host/apps/hello_world/build/hello_world.elf -gui=elite
+./bin/occamy_top.vcs sw/host/apps/axpy_standalone/build/axpy_standalone.elf -gui=elite
+./bin/occamy_top.vcs sw/host/apps/axpy/build/axpy.elf -gui=elite
+./bin/occamy_top.vcs sw/host/apps/offload/build/offload.elf -gui=elite
+```
 
 ## Creating your first app for CVA6 (the host)
 
@@ -86,10 +95,10 @@ int main() {
 
     // Read the mcycle CSR (this is our way to mark/delimit a specific code region for benchmarking)
     uint64_t start_cycle = mcycle();
-    
+
     // Call your kernel
     axpy(L, a, x, y, z);
-    
+
     // Read the mcycle CSR
     uint64_t end_cycle = mcycle();
 }
@@ -255,7 +264,7 @@ int main() {
 
 The `snrt.h` file implements the snRuntime API, a library of convenience functions to program Snitch cluster based systems. It defines `snrt_cluster_core_idx()` for instance, that reads the `mhartid` CSR and other Snitch cluster related data structures. In addition to these, it provides Occamy-specific convenience functions such as `return_to_cva6()`, which exploits the CLINT peripheral to send an interrupt to the CVA6 host.
 
-Note also that `start_cycle` is now of type `uint32_t`. Don't forget that Snitch has a 32-bit integer ISA, while CVA6 has a 64-bit architecture. 
+Note also that `start_cycle` is now of type `uint32_t`. Don't forget that Snitch has a 32-bit integer ISA, while CVA6 has a 64-bit architecture.
 
 ___Note:__ When you have time, have a look at the files inside `sw/snRuntime` in the root of this repository to see what kind of functionality the snRuntime API defines. Note this is only an API, with some base implementations. The Occamy implementation of the snRuntime can be found under `occamy/sw/device/runtime`. It is automatically built and linked with user applications thanks to our compilation scripts._
 

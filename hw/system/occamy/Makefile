@@ -65,16 +65,17 @@ VSIM_FLAGS += -do "log -r /*; run -a"
 # TODO: Workaround; revise
 VSIM_FLAGS += -warning 8386
 
-VCS_FLAGS += +nospecify
+#VCS_FLAGS += +nospecify
+VCS_FLAGS += -override_timescale=1ns/1ps
 VCS_FLAGS += -Mdir=work-vcs
 VCS_FLAGS += -Mlib=work-vcs
 VCS_FLAGS += -full64
 # Multi-core
 VCS_FLAGS += -fgp
 # Debug Options
-VCS_FLAGS += -assert disable_cover
+#VCS_FLAGS += -assert disable_cover
 VCS_FLAGS += -kdb
-VCS_FLAGS += +vcs+fsdbon
+#VCS_FLAGS += +vcs+fsdbon
 VCS_FLAGS += +lint=TFIPC-L
 VCS_FLAGS += -debug_access+all
 

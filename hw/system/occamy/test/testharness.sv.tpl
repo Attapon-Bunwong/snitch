@@ -171,8 +171,8 @@ module testharness import occamy_pkg::*; (
 
   uartdpi #(
     .BAUD ('d115_200),
-    // Frequency shouldn't matter since we are sending with the same clock.
-    .FREQ ('d500_000),
+    // This clock must set to be equal in the C code sw that call init_uart()
+    .FREQ('d100_000_000),
     .NAME("uart0")
   ) i_uart0 (
     .clk_i (clk_i),

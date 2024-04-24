@@ -1,0 +1,239 @@
+Magic 271485
+Revision Verdi_V-2023.12
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1088 242 318 77
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/attapon/Persimmons/chiplet/snitch/hw/system/occamy/inter.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 1352055819.053862
+cursor 0.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 164
+; marker line index
+markerPos 185
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "i_occamy"
+activeDirFile "" "/home/attapon/Persimmons/chiplet/snitch/hw/system/occamy/inter.fsdb"
+addSignal -h 15 /tb_bin/i_dut/i_occamy/clk_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/rst_ni
+addSignal -h 15 /tb_bin/i_dut/i_occamy/clk_periph_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/rst_periph_ni
+addSignal -h 15 /tb_bin/i_dut/i_occamy/rtc_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/test_mode_i
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/chip_id_i[1:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/boot_mode_i[1:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/uart_tx_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/uart_rx_i
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/gpio_d_i[31:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/gpio_d_o[31:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/gpio_oe_o[31:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/jtag_trst_ni
+addSignal -h 15 /tb_bin/i_dut/i_occamy/jtag_tck_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/jtag_tms_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/jtag_tdi_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/jtag_tdo_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i2c_sda_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i2c_sda_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i2c_sda_en_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i2c_scl_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i2c_scl_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i2c_scl_en_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/spim_sck_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/spim_sck_en_o
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/spim_csb_o[1:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/spim_csb_en_o[1:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/spim_sd_o[3:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/spim_sd_en_o[3:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/spim_sd_i[3:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/bootrom_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/bootrom_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/fll_system_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/fll_system_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/fll_periph_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/fll_periph_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/fll_hbm2e_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/fll_hbm2e_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_wide_cfg_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_wide_cfg_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_narrow_cfg_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_narrow_cfg_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_cfg_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_cfg_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/pcie_cfg_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/pcie_cfg_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/chip_ctrl_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/chip_ctrl_rsp_i
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/ext_irq_i[12:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_0_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_0_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_1_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_1_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_2_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_2_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_3_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_3_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_4_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_4_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_5_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_5_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_6_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_6_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_7_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbm_7_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_wide_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_wide_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_wide_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_wide_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_narrow_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_narrow_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_narrow_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/hbi_narrow_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/pcie_axi_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/pcie_axi_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/pcie_axi_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/pcie_axi_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/sram_cfgs_i
+addGroup "i_occamy_soc"
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/clk_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/rst_ni
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/test_mode_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_0_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_0_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_1_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_1_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_2_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_2_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_3_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_3_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_4_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_4_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_5_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_5_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_6_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_6_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_7_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_7_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_wide_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_wide_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_wide_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_wide_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_narrow_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_narrow_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_narrow_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbi_narrow_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/pcie_axi_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/pcie_axi_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/pcie_axi_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/pcie_axi_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/periph_axi_lite_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/periph_axi_lite_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/periph_axi_lite_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/periph_axi_lite_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/periph_axi_lite_narrow_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/periph_axi_lite_narrow_rsp_i
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/spm_narrow_rerror_o[1:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/spm_wide_rerror_o[1:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/mtip_i[9:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/msip_i[9:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/eip_i[1:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/debug_req_i[0:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/sram_cfgs_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/hbm_xbar_interleaved_mode_ena_i
+addGroup "i_occamy_cva6"
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/clk_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/rst_ni
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/irq_i[1:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/ipi_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/time_irq_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/debug_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/axi_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/axi_resp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_cva6/sram_cfg_i
+addGroup "i_occamy_quadrant_s1_0"
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/clk_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/rst_ni
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/test_mode_i
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/tile_id_i[5:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/meip_i[8:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/mtip_i[8:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/msip_i[8:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_narrow_out_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_narrow_out_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_narrow_in_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_narrow_in_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_wide_out_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_wide_out_rsp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_wide_in_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/quadrant_wide_in_rsp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/sram_cfg_i
+addGroup "i_occamy_cluster_0"
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/clk_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/rst_ni
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/meip_i[8:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/mtip_i[8:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/msip_i[8:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/hart_base_id_i[9:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/cluster_base_addr_i[47:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/sram_cfgs_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/narrow_in_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/narrow_in_resp_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/narrow_out_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/narrow_out_resp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/wide_out_req_o
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/wide_out_resp_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/wide_in_req_i
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_occamy_soc/i_occamy_quadrant_s1_0/i_occamy_cluster_0/wide_in_resp_o
+addSignal -h 15 /tb_bin/i_dut/i_uart0/rxactive
+addSignal -h 15 -UNSIGNED -UDEC /tb_bin/i_dut/i_uart0/rxcount[31:0]
+addSignal -h 15 -UNSIGNED -UDEC /tb_bin/i_dut/i_uart0/rxcyccount[31:0]
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_uart0/rxsymbol[7:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/CLK
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/RST
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/TXCLK
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/TXSTART
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/CLEAR
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/DIN[7:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/TXFINISHED
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/UART_TX/SOUT
+addSignal -h 15 -UNSIGNED -HEX /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/iBaudgenDiv[15:0]
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/iBaudtick16x
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/iBaudtick16x
+addSignal -h 15 /tb_bin/i_dut/i_occamy/i_uart/i_apb_uart/iBaudtick2x
+addGroup "G6"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+
