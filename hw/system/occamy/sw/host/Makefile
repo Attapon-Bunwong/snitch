@@ -8,6 +8,7 @@
 APPS  = hello_world
 APPS += offload
 APPS += axpy_standalone
+APPS += axpy_offload
 
 TARGET ?= all
 
