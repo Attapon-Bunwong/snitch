@@ -37,16 +37,24 @@ inline uint32_t elect_director(uint32_t num_participants) {
 // to be synchronized.
 inline void return_to_cva6(sync_t sync) {
     // Optionally synchronize cores in each cluster
-    if (sync == SYNC_ALL) snrt_cluster_hw_barrier();
+    if (sync == SYNC_ALL) {
+        uint32_t cnt = 0;
+        do {
+            snrt_cluster_hw_barrier();
+            cnt = __atomic_add_fetch(&(_snrt_barrier.cnt), 1, __ATOMIC_RELAXED);
+        } while (cnt != snrt_cluster_num());
+    }
     // Optionally synchronize clusters
     if (sync != SYNC_NONE) {
         if (snrt_is_dm_core()) {
-            uint32_t cnt =
-                __atomic_add_fetch(&(_snrt_barrier.cnt), 1, __ATOMIC_RELAXED);
-            if (cnt == snrt_cluster_num()) {
-                _snrt_barrier.cnt = 0;
-                snrt_int_sw_set(0);
-            }
+            // uint32_t cnt =
+            //     __atomic_add_fetch(&(_snrt_barrier.cnt), 1,
+            //     __ATOMIC_RELAXED);
+            // if (cnt == snrt_cluster_num()) {
+            //     _snrt_barrier.cnt = 0;
+            //     snrt_int_sw_set(0);
+            // }
+            snrt_int_sw_set(0);
         }
     }
     // Otherwise assume cores are already synchronized and only
