@@ -378,6 +378,7 @@ module ${name}_top
     .rst_ni (${regbus_debug.rst}),
     .testmode_i (1'b0),
     .ndmreset_o (),
+    .ndmreset_ack_i(1'b1),
     .dmactive_o (),
     .debug_req_o (debug_req),
     .unavailable_i ('0),

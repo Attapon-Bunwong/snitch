@@ -53,6 +53,8 @@ The `sw` target first generates some C header files which depend on the hardware
 The `DEBUG=ON` flag is used to tell the compiler to produce debugging symbols. It is necessary for the `annotate` target, showcased in the Debugging section of this guide, to work.
 
 ```bash
+./bin/occamy_top.vcs sw/host/apps/hello_world/build/hello_world.elf --disable_preloading "+jtag_openocd"
+
 ./bin/occamy_top.vcs sw/host/apps/hello_world/build/hello_world.elf -gui=elite
 ./bin/occamy_top.vcs sw/host/apps/axpy_standalone/build/axpy_standalone.elf -gui=elite
 ./bin/occamy_top.vcs sw/host/apps/axpy/build/axpy.elf -gui=elite

@@ -24,9 +24,11 @@ module testharness import occamy_pkg::*; (
     end
   end
 
-  logic clk_periph_i, rst_periph_ni;
+  logic clk_periph_i, rst_periph_ni, clk_jtag_i, rst_jtag_ni;
   assign clk_periph_i = clk_i;
   assign rst_periph_ni = rst_ni;
+  assign clk_jtag_i = clk_i;
+  assign rst_jtag_ni = rst_ni;
 
 <%def name="tb_memory(bus, name)">
   ${bus.req_type()} ${name}_req;
@@ -116,11 +118,11 @@ module testharness import occamy_pkg::*; (
     .gpio_d_i ('0),
     .gpio_d_o (),
     .gpio_oe_o (),
-    .jtag_trst_ni ('0),
-    .jtag_tck_i ('0),
-    .jtag_tms_i ('0),
-    .jtag_tdi_i ('0),
-    .jtag_tdo_o (),
+    .jtag_trst_ni (sim_jtag_trstn),
+    .jtag_tck_i (sim_jtag_tck),
+    .jtag_tms_i (sim_jtag_tms),
+    .jtag_tdi_i (sim_jtag_tdi),
+    .jtag_tdo_o (sim_jtag_tdo),
     .i2c_sda_o (),
     .i2c_sda_i ('0),
     .i2c_sda_en_o (),
@@ -167,6 +169,44 @@ module testharness import occamy_pkg::*; (
     .pcie_axi_rsp_i (pcie_axi_rsp),
     .pcie_axi_req_i ('0),
     .pcie_axi_rsp_o ()
+  );
+
+  //////////////////
+  // JTAG OpenOCD //
+  //////////////////
+
+  logic sim_jtag_tck;
+  logic sim_jtag_tms;
+  logic sim_jtag_tdi;
+  logic sim_jtag_trstn;
+  logic sim_jtag_tdo;
+  logic [31:0] sim_jtag_exit;
+  logic sim_jtag_enable;
+
+  always_comb begin
+    sim_jtag_enable = 1'b0; // Enable OpenOCD client simulation model
+    // Boot with jtag openocd with "+jtag_openocd"
+    if ($test$plusargs("jtag_openocd")) begin
+      sim_jtag_enable = 1'b1;
+    end
+  end
+
+  // jtag calls from dpi
+  SimJTAG #(
+      .TICK_DELAY(1),
+      .PORT      (9999)
+  ) i_sim_jtag (
+      .clock          (clk_jtag_i),
+      .reset          (~rst_jtag_ni),
+      .enable         (sim_jtag_enable),
+      .init_done      (rst_jtag_ni),
+      .jtag_TCK       (sim_jtag_tck),
+      .jtag_TMS       (sim_jtag_tms),
+      .jtag_TDI       (sim_jtag_tdi),
+      .jtag_TRSTn     (sim_jtag_trstn),
+      .jtag_TDO_data  (sim_jtag_tdo),
+      .jtag_TDO_driven(1'b1),
+      .exit           (sim_jtag_exit)
   );
 
   uartdpi #(

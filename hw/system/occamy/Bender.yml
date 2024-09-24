@@ -66,6 +66,12 @@ sources:
   - target: any(simulation, verilator)
     files:
       - test/uartdpi/uartdpi.sv
+      #- test/boot_lib/jtag_pkg.sv
+      # Use riscv_pkg that was defined on snitch repos at CVA6 core instead, cause it conflict declaration.
+      # - test/boot_lib/riscv_pkg.sv
+      - test/boot_lib/SimJTAG.sv
+      #- test/boot_lib/srec/srec_pkg.sv
+      #- test/boot_lib/srec/srec.sv
       - test/testharness.sv
 # - target: any(simulation, verilator)
 #   files:

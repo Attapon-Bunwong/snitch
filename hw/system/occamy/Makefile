@@ -405,14 +405,21 @@ clean-vsim: clean-work
 # VCS #
 #######
 
+# remote_bitband driver for openocd
+test/boot_lib/remote_bitbang/librbs_vcs.so:
+	$(MAKE) -C test/boot_lib/remote_bitbang all INCLUDE_DIRS="./ $(if $(VCS_HOME),$(VCS_HOME)/include,)"
+	mv test/boot_lib/remote_bitbang/librbs.so $@
+
 # Build compilation script and compile all sources for VCS simulation
 # @IIS: vcs-2020.12 make bin/occamy_top.vcs
 # CC=$(QUESTA_HOME)/gcc-5.3.0-linux_x86_64/bin/gcc
 # CXX=$(QUESTA_HOME)/gcc-5.3.0-linux_x86_64/bin/g++
 # LD=$(QUESTA_HOME)/gcc-5.3.0-linux_x86_64/bin/ld
-bin/occamy_top.vcs: work-vcs/compile.sh work/lib/libfesvr.a ${TB_CC_SOURCES} test/bootrom.bin
+bin/occamy_top.vcs: work-vcs/compile.sh work/lib/libfesvr.a ${TB_CC_SOURCES} test/boot_lib/remote_bitbang/librbs_vcs.so test/bootrom.bin
 	mkdir -p bin
 	vcs $(VCS_FLAGS) -o bin/occamy_top.vcs tb_bin -cc $(CC) -cpp $(CXX) \
+	-CC "$(if $(VCS_HOME),-I$(VCS_HOME)/include,) -O3 -march=native" \
+		test/boot_lib/remote_bitbang/librbs_vcs.so \
 		$(TB_CC_SOURCES) -CFLAGS "$(TB_CC_FLAGS)" -LDFLAGS "-L${FESVR}/lib" -lfesvr -lutil
 
 # Clean all build directories and temporary files for VCS simulation
