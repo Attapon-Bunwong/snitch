@@ -77,6 +77,7 @@ module occamy_soc
     input logic [9:0] msip_i,
     input logic [1:0] eip_i,
     input logic [0:0] debug_req_i,
+    input logic rst_cva6_ni,
 
     /// SRAM configuration
     input sram_cfgs_t sram_cfgs_i,
@@ -812,7 +813,8 @@ module occamy_soc
 
   occamy_cva6 i_occamy_cva6 (
       .clk_i(clk_i),
-      .rst_ni(rst_ni),
+      // .rst_ni (rst_ni),
+      .rst_ni(rst_cva6_ni),
       .irq_i(eip_i),
       .ipi_i(msip_i[0]),
       .time_irq_i(mtip_i[0]),

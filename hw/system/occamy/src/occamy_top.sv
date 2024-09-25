@@ -127,6 +127,7 @@ module occamy_top
   occamy_soc_reg_pkg::occamy_soc_hw2reg_t soc_ctrl_in;
   logic [1:0] spm_narrow_rerror;
   logic [1:0] spm_wide_rerror;
+  logic rst_cva6_ni;
 
   always_comb begin
     soc_ctrl_in = '0;
@@ -376,6 +377,7 @@ module occamy_top
       .msip_i(msip),
       .eip_i(eip),
       .debug_req_i(debug_req),
+      .rst_cva6_ni(rst_cva6_ni),
       .sram_cfgs_i,
       .hbm_xbar_interleaved_mode_ena_i(hbm_xbar_reg2hw.interleaved_ena.q)
   );
@@ -723,6 +725,18 @@ module occamy_top
 
   logic [63:0] sba_addr_long;
 
+  logic ndmreset, ndmreset_soc_0, ndmreset_soc;
+  // Stabilize reset signal
+  `FFNR(ndmreset_soc_0, ndmreset, clk_i)
+  `FFNR(ndmreset_soc, ndmreset_soc_0, clk_i)
+
+  logic ndmreset_ack_0, ndmreset_ack;
+  // Stabilize reset signal
+  `FFNR(ndmreset_ack_0, ndmreset_soc, clk_periph_i)
+  `FFNR(ndmreset_ack, ndmreset_ack_0, clk_periph_i)
+
+  `FFNR(rst_cva6_ni, rst_ni & (~ndmreset_soc), clk_i)
+
   dm_top #(
       // .NrHarts (10),
       .NrHarts(1),
@@ -731,9 +745,10 @@ module occamy_top
   ) i_dm_top (
       .clk_i(clk_periph_i),
       .rst_ni(rst_periph_ni),
+      .next_dm_addr_i('0),
       .testmode_i(1'b0),
-      .ndmreset_o(),
-      .ndmreset_ack_i(1'b1),
+      .ndmreset_o(ndmreset),
+      .ndmreset_ack_i(ndmreset_ack),
       .dmactive_o(),
       .debug_req_o(debug_req),
       .unavailable_i('0),
